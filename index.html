@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vívien Ester Fuel — Portfólio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory: #FBF6F3;
+    --wine: #6B2E4A;
+    --rose: #C88A96;
+    --blush: #F1D9D6;
+    --charcoal: #2E2630;
+    --gold: #B08D57;
+    --line: rgba(107,46,74,0.16);
+  }
+
+  *{ box-sizing: border-box; margin: 0; padding: 0; }
+
+  body{
+    background: var(--ivory);
+    color: var(--charcoal);
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  h1, h2, h3, .brand{
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    color: var(--wine);
+    letter-spacing: 0.01em;
+  }
+
+  a{ color: inherit; text-decoration: none; }
+
+  img{ max-width: 100%; display: block; }
+
+  #topo{
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 6vw;
+    background: rgba(251,246,243,0.9);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .brand{
+    font-size: 50px;
+    font-style: italic;
+  }
+
+  #menu{
+    display: flex;
+    gap: 30px;
+    list-style: none;
+  }
+
+  #menu li a{
+    font-size: 0.95rem;
+    color: var(--charcoal);
+    position: relative;
+    padding-bottom: 4px;
+    transition: color 0.25s ease;
+  }
+
+  #menu li a::after{
+    content: "";
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 0%;
+    height: 1px;
+    background: var(--wine);
+    transition: width 0.3s ease;
+  }
+
+  #menu li a:hover{ color: var(--wine); }
+  #menu li a:hover::after{ width: 100%; }
+
+  .bloco{
+    padding: 140px 6vw 100px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .rotulo{
+    font-size: 20px;
+    color: var(--rose);
+    margin-bottom:5px;
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  #inicio{
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+    min-height: 90vh;
+    padding-top: 180px;
+  }
+
+  .hero-texto{ flex: 1.1; }
+
+  .hero-texto h1{
+    font-size: clamp(2.6rem, 5vw, 4.2rem);
+    line-height: 1.1;
+    margin-bottom: 1.2rem;
+  }
+  .hero-linha{
+    width: 70px;
+    height: 2px;
+    background: var(--gold);
+    margin: 1.6rem 0;
+  }
+
+  .hero-foto{
+    flex: 0.9;
+    display: flex;
+    justify-content: center;
+  }
+
+  .moldura-foto{
+    width: 320px;
+    height: 380px;
+    border-radius: 50% / 45%;
+    background: var(--blush);
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  
+
+  #sobre h2{ font-size: 2.2rem; margin-top: 2.2rem; }
+  #sobre h2:first-child{ margin-top: 0; }
+
+  #sobre p{ margin-bottom: 1rem; color: #5b4f57; max-width: 65ch; }
+  .sobre-flex {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    flex-wrap: nowrap;
+}
+
+.sobre-texto {
+    flex: 1.2;
+}
+
+.formacao-grid{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.formacao-coluna{
+    width: 100%;
+    height: 130px;
+    border-left: 3px solid var(--wine);
+    padding: 1.2rem 1.6rem;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 14px;
+}
+
+.formacao-coluna:hover{
+    transform: translateY(-6px);
+    box-shadow: 0 14px 30px rgba(107,46,74,0.25);
+}
+
+.formacao-coluna h3{
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--wine);
+    font-size: 1.2rem;
+    margin-bottom: 6px;
+}
+
+.formacao-coluna p{
+    color: #5b4f57;
+    font-size: 0.9rem;
+}
+
+  #competencias h2{ font-size: 35px; margin-bottom: 10px; }
+
+  .skills-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.6rem;
+  }
+
+  .skill-card{
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 2rem 1.6rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .skill-card:hover{
+    transform: translateY(-6px);
+    box-shadow: 0 14px 30px rgba(107,46,74,0.12);
+  }
+
+  .skill-card h3{
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--wine);
+    font-size: 1.4rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .skill-card p{
+    font-size: 15px;
+    color: #5b4f57;
+  }
+
+  .skill-barra{
+    margin-top: 1.2rem;
+    height: 6px;
+    background: var(--blush);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .skill-barra span{
+    display: block;
+    height: 100%;
+    background: var(--wine);
+    border-radius: 10px;
+  }
+.skill-card2{
+    position: relative;
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 1.2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-card2:hover{
+    transform: translateY(-6px);
+    box-shadow: 0 14px 30px rgba(107,46,74,0.12);
+}
+
+.foto-wrapper{
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.skill-foto{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    border-radius: 5px;
+    transition: filter 0.3s ease;
+}
+
+.foto-wrapper:hover .skill-foto{
+    filter: blur(4px);
+}
+
+.skill-info-extra{
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.45);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.8rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.skill-info-extra p{
+  font: size 0.85rem;
+  line-height: 1.5;
+}
+
+.foto-wrapper:hover .skill-info-extra{
+    opacity: 1;
+}
+  #contacto{ text-align: center;}
+
+  #contacto h2{ font-size: 2.2rem; margin-bottom: 0.8rem; }
+
+  #contacto p{
+    color: #5b4f57;
+    max-width: 50ch;
+    margin: 0 auto 2rem auto;
+  }
+
+  .contacto-links{
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+  }
+
+  .contacto-links a{
+    border: 1px solid var(--wine);
+    color: var(--wine);
+    padding: 0.7rem 1.6rem;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    transition: background 0.3s ease, color 0.3s ease
+  }
+
+  .contacto-links a:hover{
+    background: var(--wine);
+    color: var(--ivory);
+  }
+
+  #rodape{
+    text-align: center;
+    padding: 2.4rem 6vw 3rem;
+    font-size: 0.85rem;
+    color: var(--rose);
+  }
+</style>
+</head>
+<body>
+
+<div id="topo">
+  <a href="#inicio" class="brand">Vívien Fuel</a>
+  <ul id="menu">
+    <li><a href="#inicio">Início</a></li>
+    <li><a href="#sobre">Sobre mim</a></li>
+    <li><a href="#formacao">Formação</a></li>
+    <li><a href="#competencias">Competências</a></li>
+    <li><a href="#projectos">Projectos</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</div>
+
+<div id="inicio" class="bloco">
+  <div class="hero-texto">
+    <p class="rotulo">Olá, seja bem-vinda(o), eu sou</p>
+    <h1>Vívien Ester Fuel</h1>
+    <div class="hero-linha"></div>
+  </div>
+  <div class="hero-foto">
+    <div class="moldura-foto">
+      <div class="foto-placeholder"> <img src="minha foto 6.jpeg" ></div>
+    </div>
+  </div>
+</div>
+<div id="sobre" class="bloco sobre-flex">
+  <div class="sobre-texto">
+    <h2>Sobre Mim</h2>
+    <p>Chamo-me Vivien Ester Aderito Fuel, tenho 17 anos, sou natural de Maputo e estudante do segundo ano de Suporte Informático no ITC.</p>
+    <p>Gosto de comer, dormir e assistir séries, mas também pratico Taekwondo.</p>
+    <p>Tenho como objectivos concluir o curso de Suporte Informático com distinção; Aprender desenvolvimento web de forma aprofundada; Conseguir um estágio na área de informática no Banco de Moçambique.</p>
+  </div>
+  <div class="moldura-foto">
+    <img src="minha foto 4.jpeg" alt="Foto de Vívien">
+  </div>
+</div>
+
+<div id="formacao" class="bloco">
+  <h2>Minha Formação</h2>
+    <div class="formacao-grid">
+    <div class="formacao-coluna">
+      <h3>Ensino Secundário</h3>
+      <p>Conclui a 10 classe na Escola Secundária São Gabriel no ano de 2024 e irei concluir a 12 classe no ano em curso.</p>
+    </div>
+    <div class="formacao-coluna">
+      <h3>Curso Técnico</h3>
+      <p>Conclui o CV3 em Electricidade Industrial no ano de 2025 no ITC e no ano em curso irei concluir o CV4 em Suporte Informático ITC.</p>
+    </div>
+    <div class="formacao-coluna">
+      <h3>Hobbies</h3>
+      <p>Alem de ser estudante sou faixa amarela em taekwondo e fiz um curso de doces e salgados na SJ delicias</p>
+    </div>
+  </div>
+</div>
+
+<div id="competencias" class="bloco">
+  <h2>Competências</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <h3>HTML</h3>
+      <p>Estruturação de páginas Web: títulos, parágrafos, listas, tabelas e formulários.</p>
+      <div class="skill-barra"><span style="width: 75%;"></span></div>
+    </div>
+    <div class="skill-card">
+      <h3>CSS</h3>
+      <p>Estilização de páginas: cores, layouts com Flexbox e Grid, animações e responsividade.</p>
+      <div class="skill-barra"><span style="width: 65%;"></span></div>
+    </div>
+    <div class="skill-card">
+      <h3>Instalação Eléctrica</h3>
+      <p>Conceitos básicos de instalação e segurança eléctrica.</p>
+      <div class="skill-barra"><span style="width: 85%;"></span></div>
+    </div>
+    <div class="skill-card">
+      <h3>Cisco Packet Tracer</h3>
+      <p>Simulação e configuração básica de redes.</p>
+      <div class="skill-barra"><span style="width: 65%;"></span></div>
+    </div>
+    <div class="skill-card">
+      <h3>Redes</h3>
+      <p>Conceitos fundamentais de redes de computadores.</p>
+      <div class="skill-barra"><span style="width: 75%;"></span></div>
+    </div>
+  </div>
+</div>
+
+<div id="projectos" class="bloco">
+  <h2>Projectos</h2>
+  <div class="skills-grid">
+
+    <div class="skill-card2">
+    <div class="foto-wrapper">
+     <img src="telerruptor.jpeg" alt="Descrição do projecto 1" class="skill-foto">
+      <div class="skill-info-extra">
+        <p>Nesta actividade foi acionada uma lampada atraves de um telerruptor.</p>
+      </div>
+    </div>
+    <h3>Projecto 1 </h3>
+    </div>
+
+    <div class="skill-card2">
+      <div class="foto-wrapper">
+      <img src="acionamento de lampadas com interruptor duplo.jpeg" alt="Descrição do projecto 2" class="skill-foto">
+      <div class="skill-info-extra">
+        <p>Neste projecto foram acionadas duas lampadas atraves de um interruptor duplo.</p>
+      </div>
+      </div>
+      <h3>Projecto 2 </h3>
+    </div>
+
+    <div class="skill-card2">
+      <div class="foto-wrapper">
+      <img src="foto de carregador.jpeg" alt="Descrição do projecto 3" class="skill-foto">
+      <div class="skill-info-extra">
+        <p>Neste projeto foi feito um circuito retificador em ponte que se comporta como um carregador.</p>
+      </div>
+      </div>
+      <h3>Projecto 3 </h3>
+    </div>
+
+  </div>
+</div>
+
+<div id="contacto" class="bloco">
+  <h2>Contacto</h2>
+  <p>Estou disponível para partilhar ideias, aprender e evoluir. Sinta-se à vontade para entrar em contacto.</p>
+  <div class="contacto-links">
+    <a href="mailto:vivienfuel25@email.com">Enviar e-mail</a>
+    <a href="https://wa.me/258879098433" target="_blank">WhatsApp</a>
+    <a href="https://www.instagram.com/viyh_.ttw?stkn=eGFjdHdncGs5ZWo3&utm_source=qr" target="_blank">Instagram</a>
+    <a href="CURRICULUM VITAE.pdf" target="_blank">Ver CV</a>
+</div>
+
+<div id="rodape">
+  2026_Vívien Ester Fuel. Feito com amor e carinho.
+</div>
+</body>
+</html>
